@@ -1,6 +1,4 @@
 <?php
-
-//Variabelen vullen
 $attractie = $_POST['attractie'];
 if(empty($attractie)) 
 { 

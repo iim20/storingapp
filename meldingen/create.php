@@ -21,7 +21,6 @@
             </div>
             <div class="form-group">
                 <label for="type">Type</label>
-                <!-- hier komt een dropdown -->
                 <select name="type" id="type" class="form-input">
                     <option value=""> - Kies je klas - </option>
                     <option value="achtbaan">Achtbaan</option>

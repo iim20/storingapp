@@ -18,8 +18,48 @@
         {
             echo "<div class='msg'>" . $_GET['msg'] . "</div>";
         } ?>
-
-        <div style="height: 300px; background: #ededed; display: flex; justify-content: center; align-items: center; color: #666666;">(hier komen de storingsmeldingen)</div>
+        <?php
+            require_once"../backend/conn.php";                          //verbinding ophalen
+            $query = "SELECT * FROM meldingen";                         //query schrijven
+            $statement = $conn->prepare($query);                        //van query naar statement
+            $statement ->execute();                                     //statement uitvoeren
+            $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);        //resultaat ophalen
+        ?>
+        
+        <table>
+            <tr>
+                <th>Attractie</th>
+                <th>Type</th>
+                <th>Capaciteit</th>
+                <th>Prioriteit</th>
+                <th>Melder</th>
+                <th>Gemeld op</th>
+                <th>Overige info</th>
+                <th>Aanpassen</th>
+            </tr>
+            <?php foreach($meldingen as $melding): ?>
+                <tr>
+                    <td><?php echo $melding['attractie'];?></td>
+                    <td><?php echo $melding['type'];?></td>
+                    <td><?php echo $melding['capaciteit'];?></td>
+                    <td><?php
+                     if($melding['prioriteit'] == 1)
+                         {
+                             echo $melding['prioriteit'] = "Ja";
+                         } 
+                     else
+                         {
+                             echo $melding['prioriteit'] = "Nee";
+                         }
+                    ?>
+                    </td>
+                    <td><?php echo $melding['melder'];?></td>
+                    <td class="td-width-tijd"><?php echo $melding['gemeld_op'];?></td>
+                    <td class="td-width"><?php echo $melding['overige_info'];?></td>
+                    <td><?php echo "<a href=edit.php>aanpassen</a>"?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
     </div>  
 
 </body>

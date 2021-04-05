@@ -1,3 +1,13 @@
+<?php
+require_once '../backend/config.php';
+session_start();
+if(!isset($_SESSION['user_id']))
+{
+	$msg = "Je moet eerst inloggen!";
+	header("Location: $base_url/login.php?msg=$msg");
+	exit;
+}
+?>
 <!doctype html>
 <html lang="nl">
 
@@ -14,10 +24,16 @@
         <h1>Meldingen</h1>
         <a href="create.php">Nieuwe melding &gt;</a>
 
-        <?php if(isset($_GET['msg']))
+        <?php 
+        if(isset($_GET['msg']))
         {
             echo "<div class='msg'>" . $_GET['msg'] . "</div>";
-        } ?>
+        }
+        elseif(isset($_GET['deleted']))
+        {
+            echo "<div class='deleted'>" . $_GET['deleted'] . "</div>";   
+        } 
+        ?>
         <?php
             require_once"../backend/conn.php";                          //verbinding ophalen
             $query = "SELECT * FROM meldingen";                         //query schrijven
@@ -56,7 +72,7 @@
                     <td><?php echo $melding['melder'];?></td>
                     <td class="td-width-tijd"><?php echo $melding['gemeld_op'];?></td>
                     <td class="td-width"><?php echo $melding['overige_info'];?></td>
-                    <td><?php echo "<a href=edit.php>aanpassen</a>"?></td>
+                    <td><?php echo "<a href=edit.php?id={$melding['id']}>aanpassen</a>"?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

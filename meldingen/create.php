@@ -1,3 +1,13 @@
+<?php
+require_once '../backend/config.php';
+session_start();
+if(!isset($_SESSION['user_id']))
+{
+	$msg = "Je moet eerst inloggen!";
+	header("Location: $base_url/login.php?msg=$msg");
+	exit;
+}
+?>
 <!doctype html>
 <html lang="nl">
 
@@ -14,7 +24,8 @@
         <h1>Nieuwe melding</h1>
 
         <form action="../backend/meldingenController.php" method="POST">
-        
+            <input type="hidden" name="action" value="create">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-group">
                 <label for="attractie">Naam attractie:</label>
                 <input type="text" name="attractie" id="attractie" class="form-input">
@@ -22,7 +33,7 @@
             <div class="form-group">
                 <label for="type">Type</label>
                 <select name="type" id="type" class="form-input">
-                    <option value=""> - Kies je klas - </option>
+                    <option value=""> - Kies een attractie - </option>
                     <option value="achtbaan">Achtbaan</option>
                     <option value="draaiend">Draaiende attractie</option>
                     <option value="kinder">Kinder attractie</option>

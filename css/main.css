@@ -134,6 +134,13 @@ h1+a{
     background-color: lightblue;
     border-radius: 4px;
 }
+.deleted{
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #ff0000;
+  color: #fff;
+  border-radius: 4px;
+}
 
 table{
     width: 100%;
@@ -180,7 +187,12 @@ tr:hover{
   background-color: #d3d3d3; 
 }
 
+/*Login-out*/
 
+a.links{
+  text-decoration: none;
+  color: lightgrey;
+}
 
 
 

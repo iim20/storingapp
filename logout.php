@@ -1,6 +1,10 @@
 <?php
 require_once 'backend/config.php';
-session_start();
-session_destroy();
-header("Location: $base_url/index.php");
-exit;
+if(!isset($_SESSION['user_id']))
+{
+    session_start();
+    $msg = "Je bent uitgelogd!";
+    header("Location: $base_url/login.php?msg=$msg");    
+    session_destroy();
+    exit;
+}

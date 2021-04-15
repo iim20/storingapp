@@ -44,6 +44,7 @@ if(isset($_SESSION['user_id']))
                 <div class="form-group">
                     <label for=""></label>
                     <input type="submit" value="login" class="form-group">
+                    <input type="button" value="register" class="form-group" onclick='location.href="<?php echo $base_url; ?>/registratie.php";'/>
                 </div>
             </form>
         </div>

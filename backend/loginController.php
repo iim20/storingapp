@@ -12,11 +12,15 @@ $statement->execute([                                        //     4. Voer het 
 $user = $statement->fetch(PDO::FETCH_ASSOC);               //       5. Haal de gegevens op (tip: je verwacht één resultaat, niet een lijst)
 if($statement->rowCount() < 1)                            //        If-statement, check of "$statement->rowCount()" kleiner is dan 1
 { 
-    die("Error: account bestaat niet"); 
+    $error_msg = 'account bestaat niet';
+    header('Location: ../login.php?error_msg='.$error_msg);
+    die(); 
 }
 if(!password_verify($password, $user['password']))     //           Check of het ingevulde wachtwoord klopt met die uit de DB
 {
-    die("Error: wachtwoord niet juist!"); 
+    $error_msg = 'Error: wachtwoord niet juist!';
+    header('Location: ../login.php?error_msg='.$error_msg);
+    die(); 
 }
 $_SESSION['user_id'] = $user['id'];                 //              Alles alles klopt: stop gebruikersgegevens in de session
 $_SESSION['user_name'] = $user['username']; 

@@ -28,7 +28,11 @@ if(isset($_SESSION['user_id']))
         <?php 
         if(isset($_GET['msg'])) 
         { 
-            echo "<div class='msg'>" . $_GET['msg'] . "</div>"; 
+            echo "<div class='msg'>" . $_GET['error_msg'] . "</div>"; 
+        }
+        elseif(isset($_GET['error_msg'])) 
+        { 
+            echo "<div class='deleted'>" . $_GET['error_msg'] . "</div>"; 
         } 
         ?>
         <div class="form-group">

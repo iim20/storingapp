@@ -29,6 +29,10 @@ if(isset($_SESSION['user_id']))
         if(isset($_GET['msg'])) 
         { 
             echo "<div class='msg'>" . $_GET['msg'] . "</div>"; 
+        }
+        elseif(isset($_GET['error_msg'])) 
+        { 
+            echo "<div class='deleted'>" . $_GET['error_msg'] . "</div>"; 
         } 
         ?>
         <div class="form-group">
@@ -48,7 +52,7 @@ if(isset($_SESSION['user_id']))
                 <div class="form-group">
                     <label for="password">Wachtwoord Herhalen:</label>
                     <label for=""></label>
-                    <input type="password" name="cpass" placeholder="herhaal wachtwoord">
+                    <input style="margin-left:-22px;"type="password" name="cpass" placeholder="herhaal wachtwoord">
                 </div>
                 <div class="form-group">
                     <label for=""></label>

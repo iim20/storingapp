@@ -1,13 +1,23 @@
 <?php
+session_start();
+require_once 'conn.php'; 
 $action = $_POST['action'];
-//$id = $_POST['id'];
 
 if($action == 'register'){
     $naam = $_POST['username'];
     $password = $_POST['password'];
     $cpass = $_POST['cpass'];
-
-    require_once 'conn.php';                                                                
+    if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['cpass'])){
+        $error_msg = 'Niet alle velden waren correct ingevuld';
+        header('Location: ../registratie.php?error_msg='.$error_msg);
+        die();
+    }
+    if ($password!=$cpass){        
+        $error_msg = 'Wachtwoord komt niet overeens';
+        header('Location: ../registratie.php?error_msg='.$error_msg);
+        die();
+    }
+                                                                  
 
     if ($password == $cpass){
     $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -18,14 +28,10 @@ if($action == 'register'){
     ":username" => $naam,
     ":password" => $hash
     ]);
+
     }
-    elseif ($password!=$cpass){
-        
-        $errors[] = "Wachtwoord komt niet overeens!";
-    }
-    if(isset($errors)) 
-    { 
-        var_dump($errors); die();
-    }
-    header("Location: ../login.php?msg=Gebruiker opgeslagen");
+
+    $_SESSION['user_id'] = $_POST['id'];
+    $_SESSION['user_name'] = $_POST['username'];
+    header("Location: ../index.php?msg=Gebruiker+is+opgeslagen");
 }

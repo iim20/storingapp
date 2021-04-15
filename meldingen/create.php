@@ -26,6 +26,7 @@ if(!isset($_SESSION['user_id']))
         <form action="../backend/meldingenController.php" method="POST">
             <input type="hidden" name="action" value="create">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="username" value="<?php echo $_SESSION['user_name'];?>">
             <div class="form-group">
                 <label for="attractie">Naam attractie:</label>
                 <input type="text" name="attractie" id="attractie" class="form-input">

@@ -40,4 +40,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`username`, `password`) VALUES ('user1', '$2y$10$XQwbcsOWgM0KvAbya2Ad2efBwTLra2CzeduJtAuY8.BW9EHx.cFKa');
 INSERT INTO `users` (`username`, `password`) VALUES ('user2', '$2y$10$HoDxSJa/4NcFcJ.U.kj9N.cSBgcm75IwUkdgxJhLjRXY/K2cP8Fl.');
 INSERT INTO `users` (`username`, `password`) VALUES ('user3', '$2y$10$M7vkYfdWMYqLzvCqjlOh7.nPc79zwDxtItUOh/91teGikS/XrpNuO');
+INSERT INTO `users` (`username`, `password`) VALUES ('ilyas', '$2y$10$KJDJu0NzYrxMt0KAPohX.OiTxGrTNrKAJzCL.fk6o.ZnbpW4udPA.');
+
 

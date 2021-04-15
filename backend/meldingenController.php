@@ -1,6 +1,8 @@
 <?php
+session_start();
 $action = $_POST['action'];
 $id = $_POST['id'];
+$user = $_POST['username'];
 
 if($action == "create")
 {
@@ -42,8 +44,8 @@ if($action == "create")
     //1. Verbinding
     require_once 'conn.php';
     //2. Query
-    $query = "INSERT INTO meldingen (attractie, type, capaciteit, prioriteit, melder, overige_info) 
-    VALUES(:attractie, :type, :capaciteit, :prioriteit, :melder, :overige_info)";
+    $query = "INSERT INTO meldingen (attractie, type, capaciteit, prioriteit, melder, username, overige_info) 
+    VALUES(:attractie, :type, :capaciteit, :prioriteit, :melder, :username, :overige_info)";
     //3. Prepare
     $statement = $conn->prepare($query);
     //4. Execute
@@ -53,6 +55,7 @@ if($action == "create")
         ":capaciteit" => $capaciteit,
         ":prioriteit" => $prioriteit,
         ":melder" => $melder,
+        ":username" => $user,
         ":overige_info" => $overig
     ]);
 

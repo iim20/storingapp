@@ -13,12 +13,7 @@ if(isset($_SESSION['user_id']))
 
 <head>
     <title>StoringApp</title>
-	<meta charset="utf-8">
-	<meta name="description" content="StoringApp voor technische dienst van DeveloperLand">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="<?php echo $base_url; ?>/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="<?php echo $base_url; ?>/css/normalize.css">
-	<link rel="stylesheet" href="<?php echo $base_url; ?>/css/main.css">
+	<?php require_once 'head.php'; ?>
 </head>
 
 <body>
@@ -28,7 +23,7 @@ if(isset($_SESSION['user_id']))
         <?php 
         if(isset($_GET['msg'])) 
         { 
-            echo "<div class='msg'>" . $_GET['error_msg'] . "</div>"; 
+            echo "<div class='msg'>" . $_GET['msg'] . "</div>"; 
         }
         elseif(isset($_GET['error_msg'])) 
         { 
@@ -48,7 +43,7 @@ if(isset($_SESSION['user_id']))
                 <div class="form-group">
                     <label for=""></label>
                     <input type="submit" value="login" class="form-group">
-                    <input type="button" value="register" class="form-group" onclick='location.href="<?php echo $base_url; ?>/registratie.php";'/>
+                    <input type="button" value="registreer" class="form-group" onclick='location.href="<?php echo $base_url; ?>/registratie.php";'/>
                 </div>
             </form>
         </div>

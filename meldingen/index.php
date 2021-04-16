@@ -36,7 +36,7 @@ if(!isset($_SESSION['user_id']))
             <?php
             require_once "../backend/conn.php";
             $s0 = 'selected';$s1 = '';$s2 = '';$s3 = '';$s4 = '';$s5 = '';$s6 = '';$s7 = '';
-            if(!isset($_GET['type']))
+            if(empty($_GET['type']))
             {
                 $query = "SELECT * FROM meldingen";
                 $statement = $conn->prepare($query);
@@ -88,7 +88,7 @@ if(!isset($_SESSION['user_id']))
                     break;
 
                     default:
-                    $s0 = 'selected';
+                    $s0 = header("Location: $base_url/meldingen/index.php?type=");
                     $s1 = '';
                     $s2 = '';
                     $s3 = '';
@@ -104,7 +104,7 @@ if(!isset($_SESSION['user_id']))
 
             <form action="" method="GET">
                 <select name="type">
-                    <option value="Geen afdeling" <?php echo $s0;?>>- kies een type -</option>
+                    <option value="Geen afdeling">- kies een type -</option>
                     <option value="achtbaan" <?php echo $s1;?>>Achtbaan</option>
                     <option value="draaiend" <?php echo $s2;?>>Draaiende attractie</option>
                     <option value="kinder" <?php echo $s3;?>>Kinder attractie</option>

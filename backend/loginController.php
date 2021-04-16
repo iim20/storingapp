@@ -18,7 +18,7 @@ if($statement->rowCount() < 1)                            //        If-statement
 }
 if(!password_verify($password, $user['password']))     //           Check of het ingevulde wachtwoord klopt met die uit de DB
 {
-    $error_msg = 'Error: wachtwoord niet juist!';
+    $error_msg = 'Wachtwoord niet juist!';
     header('Location: ../login.php?error_msg='.$error_msg);
     die(); 
 }

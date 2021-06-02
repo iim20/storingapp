@@ -209,12 +209,6 @@ label {
     width: 600px;
 }
 
-/*Login-out*/
-
-a.links {
-    text-decoration: none;
-    color: lightgrey;
-}
 
 /* Filter */
 .filter-sort{

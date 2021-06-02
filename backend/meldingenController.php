@@ -7,38 +7,49 @@ $user = $_POST['username'];
 if($action == "create")
 {
     $attractie = $_POST['attractie'];
-    if(empty($attractie)) 
-    { 
-        $errors[] = "Vul de attractie-naam in."; 
-    }
+    // if(empty($attractie)) 
+    // { 
+    //     $errors[] = "Vul de attractie-naam in."; 
+    // }
     $type = $_POST['type'];
-    if(empty($type)) 
-    { 
-        $errors[] = "Vul de type van attractie in."; 
-    }
+    // if(empty($type)) 
+    // { 
+    //     $errors[] = "Vul de type van attractie in."; 
+    // }
     $capaciteit = $_POST['capaciteit'];
-    if(!is_numeric($capaciteit)) 
-    { 
-        $errors[] = "Vul voor capaciteit een geldig getal in."; 
-    }
-    if(isset($_POST['prioriteit']))
-    {
-        $prioriteit = true;
-    } 
-    else
-    {
-        $prioriteit = false;
-    }
+    // if(!is_numeric($capaciteit)) 
+    // { 
+    //     $errors[] = "Vul voor capaciteit een geldig getal in."; 
+    // }
+    $prioriteit = $_POST['prioriteit'];
+    // if(isset($_POST['prioriteit']))
+    // {
+    //     $prioriteit = true;
+    // } 
+    // else
+    // {
+    //     $prioriteit = false;
+    // }
     $melder = $_POST['melder'];
-    if(empty($melder)) 
-    { 
-        $errors[] = "Vul de naam van melder in."; 
-    }
+    // if(empty($melder)) 
+    // { 
+    //     $errors[] = "Vul de naam van melder in."; 
+    // }
     $overig = $_POST['overig'];
 
-    if(isset($errors)) 
-    { 
-        var_dump($errors); die();
+    // if(isset($errors)) 
+    // { 
+    //     header('Location: ../meldingen/edit.php?error_msg='.$errors);
+    //     die();
+    // }
+
+    //Validatie
+    if(empty($attractie) || empty($type) || empty($capaciteit) || empty($melder) || empty($overig) || ($prioriteit) == false)
+    {
+        //Evt. errors dumpen
+        $error_msg = 'Niet alle verplechte velden waren correct ingevuld';
+        header('Location: ../meldingen/create.php?error_msg='.$error_msg);
+        die();
     }
 
     //1. Verbinding

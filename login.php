@@ -12,7 +12,7 @@ if(isset($_SESSION['user_id']))
 <html lang="nl">
 
 <head>
-    <title>StoringApp</title>
+    <title>StoringApp | Login</title>
 	<?php require_once 'head.php'; ?>
 </head>
 

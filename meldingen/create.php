@@ -22,7 +22,12 @@ if(!isset($_SESSION['user_id']))
 
     <div class="container">
         <h1>Nieuwe melding</h1>
-
+        <?php 
+        if(isset($_GET['error_msg'])) 
+        { 
+            echo "<div class='deleted'>" . $_GET['error_msg'] . "</div>"; 
+        } 
+        ?>
         <form action="../backend/meldingenController.php" method="POST">
             <input type="hidden" name="action" value="create">
             <input type="hidden" name="id" value="<?php echo $id; ?>">

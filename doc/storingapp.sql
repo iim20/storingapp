@@ -21,13 +21,14 @@ CREATE TABLE IF NOT EXISTS `meldingen` (
   `prioriteit` tinyint(1) NOT NULL DEFAULT 0,
   `melder` varchar(255) NOT NULL,
   `gemeld_op` datetime NOT NULL DEFAULT current_timestamp(),
+  `username` varchar(255) NOT NULL,
   `overige_info` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO `meldingen` (`attractie`, `type`, `capaciteit`, `prioriteit`, `melder`, `gemeld_op`, `overige_info`) VALUES
-('Terminator3000', 'achtbaan', 200, 1, 'M. Onteur', '2020-01-01 00:00:00', 'Dit is een testmelding.');
+INSERT INTO `meldingen` (`attractie`, `type`, `capaciteit`, `prioriteit`, `melder`, `gemeld_op`, `username`, `overige_info`) VALUES
+('Terminator3000', 'achtbaan', 200, 1, 'M. Onteur', '2020-01-01 00:00:00', 'ilyas', 'Dit is een testmelding.');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (

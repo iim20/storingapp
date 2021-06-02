@@ -3,7 +3,7 @@
 <html lang="nl">
 
 <head>
-    <title>StoringApp</title>
+    <title>StoringApp | Homepage</title>
     <?php require_once 'head.php'; ?>
 </head>
 

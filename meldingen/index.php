@@ -12,7 +12,7 @@ if(!isset($_SESSION['user_id']))
 <html lang="nl">
 
 <head>
-    <title>StoringApp / Meldingen</title>
+    <title>StoringApp / Meldingen / Overzicht</title>
     <?php require_once '../head.php'; ?>
 </head>
 
@@ -26,11 +26,11 @@ if(!isset($_SESSION['user_id']))
         <div class="filter-sort">
             <!-- Row Teller -->
             <?php       
-            require_once "../backend/conn.php";                    
-            $query = "SELECT * FROM meldingen";
-            $statement = $conn->query($query);
-            $row = $statement->rowCount();
-            echo '<p> Aantal meldingen: ' . '<strong>' . $row . '</strong>' . '</p>';
+            // require_once "../backend/conn.php";                    
+            // $query = "SELECT * FROM meldingen";
+            // $statement = $conn->query($query);
+            // $row = $statement->rowCount();
+            // echo '<p> Aantal meldingen: ' . '<strong>' . $row . '</strong>' . '</p>';
             ?>
             <!-- Filter -->
             <?php
@@ -100,6 +100,7 @@ if(!isset($_SESSION['user_id']))
                 }
             }
             $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
+            echo '<p> Aantal meldingen: ' . '<strong>' . count($meldingen) . '</strong>' . '</p>';
             ?>
 
             <form action="" method="GET">
